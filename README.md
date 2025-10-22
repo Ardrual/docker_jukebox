@@ -31,6 +31,8 @@ npm install
 
 ## Running the Application
 
+### Development Mode
+
 1. Start the backend server:
 ```bash
 python backend.py
@@ -46,6 +48,32 @@ npm run dev
 The frontend will run on `http://localhost:3000`
 
 3. Open your browser and navigate to `http://localhost:3000`
+
+### Production Mode (with Gunicorn)
+
+For production deployments, use Gunicorn as the WSGI server:
+
+1. Start the backend with Gunicorn:
+```bash
+gunicorn -c gunicorn.conf.py backend:app
+```
+
+Or with custom settings:
+```bash
+gunicorn --bind 0.0.0.0:5001 --workers 4 backend:app
+```
+
+2. Build and serve the frontend:
+```bash
+npm run build
+npm run preview
+```
+
+The configuration file `gunicorn.conf.py` includes production-ready settings:
+- 4 worker processes for handling concurrent requests
+- Logging to stdout/stderr
+- Proper timeout and keepalive settings
+- Bound to `0.0.0.0:5001` for network accessibility
 
 ## Project Structure
 
