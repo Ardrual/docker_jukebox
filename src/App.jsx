@@ -29,10 +29,10 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const handlePlayDisc = async (imageId) => {
+  const handlePlayDisc = async (imageTag) => {
     setLoading(true);
     try {
-      await api.runContainer(imageId);
+      await api.runContainer(imageTag);
       await fetchData();
       setError(null);
     } catch (err) {

@@ -3,7 +3,7 @@ import React from 'react';
 export default function Disc({ image, onPlay, isPlaying }) {
   const handlePlay = () => {
     if (!isPlaying) {
-      onPlay(image.id);
+      onPlay(image.tags[0]);
     }
   };
 

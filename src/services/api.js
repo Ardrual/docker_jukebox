@@ -17,13 +17,13 @@ export const api = {
     return response.json();
   },
 
-  async runContainer(imageId) {
+  async runContainer(imageTag) {
     const response = await fetch(`${API_BASE_URL}/containers/run`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ image_id: imageId }),
+      body: JSON.stringify({ image: imageTag }),
     });
     if (!response.ok) {
       const error = await response.json();
